@@ -1,0 +1,3 @@
+CREATE DOMAIN FUEHKLASSE AS
+VARCHAR(10)
+CHECK (VALUE IN ('A', 'A2', 'A1', 'AM', 'B', 'BF17', 'BE', 'C', 'CE', 'C1', 'C1E'));

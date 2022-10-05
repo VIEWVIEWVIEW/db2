@@ -1,0 +1,1 @@
+SELECT Kontoverbindung.BANKLEITZAHL, Kontoverbindung.KONTONUMMER, Kunde.NACHNAME as Anzahl_Kontoverbindungen from KONTOVERBINDUNG join kunde on Kontoverbindung.owner=Kunde.id;

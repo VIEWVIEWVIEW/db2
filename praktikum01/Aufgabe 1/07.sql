@@ -1,0 +1,2 @@
+-- Zähle die Anzahl der Kontoverbindungen pro Kunde und gib diese mit dem Nachname des Kunden zurück
+SELECT COUNT(Kontoverbindung.owner), Kunde.NACHNAME as Anzahl_Kontoverbindungen from KONTOVERBINDUNG join kunde on Kontoverbindung.owner=Kunde.id GROUP BY Kunde.NACHNAME;
