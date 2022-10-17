@@ -1,0 +1,33 @@
+Vornamen
+
+S:^
+R:INSERT INTO Vornamen \(VornameOID,Vorname\) VALUES \(NULL,'
+S:$
+R:'\);
+
+---
+
+Nachnamen
+
+S:^
+R:INSERT INTO Nachnamen \(NachnameOID,Nachname\) VALUES \(NULL,'
+S:$
+R:'\);
+
+---
+
+Orte
+
+S:^
+R:INSERT INTO Orte \(OrtOID,Ort\) VALUES \(NULL,'
+S:$
+R:'\);
+
+---
+
+Straßen
+
+S:^
+R:INSERT INTO Strassen \(StrOID,Strasse\) VALUES \(NULL,'
+S:$
+R:'\);
