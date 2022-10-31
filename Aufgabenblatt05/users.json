@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "635fdb4c80611dbe8255ef83"
+  },
+  "last_name": "Richts",
+  "first_name": "Marc",
+  "addresses": [
+    {
+      "street": "Ernststraße 25",
+      "city": "Iserlohn",
+      "zip": "58644"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "635fe9f45dbb78c6304c12cd"
+  },
+  "last_name": "Richts",
+  "first_name": "Alina",
+  "addresses": [
+    {
+      "street": "Ernststraße 25",
+      "city": "Iserlohn",
+      "zip": "58644"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "635fea575dbb78c6304c12cf"
+  },
+  "last_name": "Gates",
+  "first_name": "Bill",
+  "addresses": [
+    {
+      "street": "Redmondstreet 23",
+      "city": "Seattle",
+      "zip": "31337"
+    },
+    {
+      "street": "Homestreet 1",
+      "city": "Seattle",
+      "zip": "31337"
+    }
+  ]
+}]

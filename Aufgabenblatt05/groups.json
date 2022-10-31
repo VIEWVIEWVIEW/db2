@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "635feceb5dbb78c6304c12d7"
+  },
+  "group_name": "Students",
+  "user_ids": [
+    {
+      "$oid": "635fdb4c80611dbe8255ef83"
+    }
+  ]
+}]
