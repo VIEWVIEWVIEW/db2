@@ -48,7 +48,6 @@ WHERE
 
 -- test:
 -- "Java ist eine Insel", BuchOID = 4, ExID = 1 (es gibt nur 1 exemplar), anschaffungsbetrag = 1.00, Mahnungsgebühren = 4.00
-
 -- Aufgabe 3
 SELECT
     (
@@ -133,17 +132,35 @@ WHERE
 -- Aufgabe 6
 SELECT
     B.Titel,
-    E.Exid,
+    S.Exid,
     S.Status
 FROM
-    Buch AS B,
-    Exemplar AS E,
     (
         SELECT
-            a.Buchoid,
-            a.Exid,
-            () AS STATUS
+            b.buchoid,
+            b.titel,
+            e.Exid,
+            (
+                CASE
+                    WHEN E.ExID IN (
+                        SELECT
+                            A.ExID
+                        FROM
+                            Ausleihe AS A
+                        WHERE
+                            A.BuchOID = E.BuchOID
+                            AND A.Rdat IS NULL
+                    ) THEN 'ausgeliehen'
+                    ELSE 'nicht ausgeliehen'
+                END
+            ) AS STATUS
         FROM
-            Ausleihe AS a
-
+            buch AS b,
+            Exemplar AS e
+        WHERE
+            b.buchoid = e.buchoid
     ) AS S
+    INNER JOIN Buch AS B ON (
+        b.buchoid = s.buchoid
+        AND b.titel = s.titel
+    )
