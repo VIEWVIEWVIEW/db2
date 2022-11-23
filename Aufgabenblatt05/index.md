@@ -131,7 +131,6 @@ db.user
   - Ähnlich wie bei Redis gibt es auch klassische eviction Algorithmen wie LRU, LFU, etc.
 
 5.d
-  - `mongos` ist der Router, welcher die Anfragen an die richtigen Shards weiterleitet. `mongod` ist der Server, welcher die Daten verwaltet.
   - Zuerst kontaktiert `mongos` alle bekannten `mongod` Instanzen und *queried* nach den Daten die zu dem Filter ``{"status": "A"}`` in der Collection ``orders`` passen.
   - Anschließend werden die Daten ``cust_id``s *gemappt*, ergo alle Daten, die die gleiche ``cust_id`` haben, werden zusammengefasst.
   - Am Ende werden die Daten *reduced*, also die Daten werden zusammengefasst. In diesem Fall wird die Summe der ``amount``s berechnet.

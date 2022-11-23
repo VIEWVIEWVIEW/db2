@@ -62,7 +62,7 @@ WHERE
             Ausleihe AS A
         WHERE
             DATEDIFF(day, V.vormerkdatum, A.spaetestesrdat) > 14
-            AND A.rdat IS NULL -- wir benutzen ja spetestesrdat. vllt mal die vorherigen aufgaben besser formulieren lol
+            AND A.rdat IS NULL
     );
 
 -- Aufgabe 3
@@ -80,7 +80,7 @@ WHERE
         WHERE
             E.anschaffungsdatum = (
                 SELECT
-                    FIRST 1 min(E2.anschaffungsdatum) -- fick firebirdsql, wo limit alter
+                    FIRST 1 min(E2.anschaffungsdatum)
                 FROM
                     Exemplar as E2
                 GROUP BY
