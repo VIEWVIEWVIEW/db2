@@ -18,7 +18,7 @@ END
 
 
 
--- Src for names: https://www.kaggle.com/datasets/kaggle/us-baby-names
+-- Src for NationalNames.csv: https://www.kaggle.com/datasets/kaggle/us-baby-names
 
 -- non indexed:
 select * from bench_3 where sp1 = 'Lena';
