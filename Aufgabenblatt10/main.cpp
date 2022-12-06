@@ -163,6 +163,9 @@ void write_db_to_file(Block blockList[], int blockListSize)
                 file.write((char *)&book.release_year, sizeof(book.release_year));
                 file.write((char *)&book.place_of_publication, sizeof(book.place_of_publication));
                 file.write((char *)&book.isbn, sizeof(book.isbn));
+
+                // write key
+                file.write((char *)&book.key, sizeof(book.key));
             }
             block = block->ueberlauf;
         }
@@ -243,6 +246,8 @@ void add_book(Block *blockList, int &blockListSize, Book new_book)
         return;
     }
 
+    print_book(new_book);
+
     if (new_book.key < 1 || new_book.key > 99999)
     {
         cout << "Key range: 1 .. 99999" << endl;
@@ -312,7 +317,7 @@ void add_sample_books(Block blockList[], int &blockListSize)
         "1337-1337-0"};
     add_book(blockList, blockListSize, book);
 
-    book = {
+    Book book2 = {
         10,
         "Tolkien",
         "The Hobbit",
@@ -320,19 +325,20 @@ void add_sample_books(Block blockList[], int &blockListSize)
         1937,
         "London",
         "1337-1337-1"};
-    add_book(blockList, blockListSize, book);
+    add_book(blockList, blockListSize, book2);
 
-    book = {
+    // write 5 books with digit sum of 9
+    Book book3 = {
         333,
         "Tolkien",
         "The Silmarillion",
         "Allen & Unwin",
-        1977,
+        1977, 
         "London",
         "1337-1337-2"};
-    add_book(blockList, blockListSize, book);
+    add_book(blockList, blockListSize, book3);
 
-    book = {
+    Book book4 = {
         9,
         "Tolkien",
         "The Children of WHO",
@@ -340,7 +346,48 @@ void add_sample_books(Block blockList[], int &blockListSize)
         2007,
         "London",
         "1337-1337-3"};
-    add_book(blockList, blockListSize, book);
+    add_book(blockList, blockListSize, book4);
+
+    Book book5 = {
+        108,
+        "Disney",
+        "The ducks",
+        "Disney Inc",
+        2007,
+        "NYC",
+        "1337-1333-4"};
+    add_book(blockList, blockListSize, book5);
+
+
+    Book book6 = {
+        117,
+        "Ihatemylife",
+        "LOLlll",
+        "Not Disney",
+        2007,
+        "NYC",
+        "1337-1333-3"};
+    add_book(blockList, blockListSize, book6);
+
+    Book book7 = {
+        126,
+        "Last straw before",
+        "UPROAR",
+        "Edge ltd.",
+        2007,
+        "Berlin",
+        "1337-1333-5"};
+    add_book(blockList, blockListSize, book7);
+
+    Book overflow_book = {
+        216, 
+        "Overflow",
+        "JK Rowling",
+        "Tropfen+Fass UG",
+        2012,
+        "Berlin",
+        "1337-1333-6"};
+    add_book(blockList, blockListSize, overflow_book);
 }
 
 void add_book_by_hand(Block blockList[], int &blockListSize)
@@ -397,6 +444,9 @@ void load_db_from_file(Block *blockList, int &blockListSize)
 
             file.read((char *)&book.place_of_publication, sizeof(book.place_of_publication));
             file.read((char *)&book.isbn, sizeof(book.isbn));
+
+            // read key
+            file.read((char *)&book.key, sizeof(book.key));
 
             add_book(blockList, blockListSize, book);
             // cout << "Loaded book: " << book.title << endl;
