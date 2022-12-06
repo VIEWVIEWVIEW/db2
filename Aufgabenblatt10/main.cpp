@@ -180,6 +180,28 @@ void write_db_to_file(Block blockList[], int blockListSize)
     file.close();
 };
 
+int binary_search_key(Block *block, int l, int r, int key)
+{
+    if (l <= r)
+    {
+        int mid = l + (r - l) / 2;
+
+        // Element in der Mitte
+        if (block->data[mid].key == key)
+            return mid;
+
+        // Linke Seite
+        if (block->data[mid].key > key)
+            return binary_search_key(block, 0, mid - 1, key);
+
+        // Rechte Seite
+        return binary_search_key(block, mid + 1, r, key);
+    }
+
+    // Kein Element gefunden
+    return -1;
+}
+
 Result search_key(Block blockList[], int blockListSize, int key)
 {
     int blockIndex = -1;
@@ -382,28 +404,6 @@ void load_db_from_file(Block *blockList, int &blockListSize)
     }
     file.close();
 };
-
-int binary_search_key(Block *block, int l, int r, int key)
-{
-    if (l <= r)
-    {
-        int mid = l + (r - l) / 2;
-
-        // Element in der Mitte
-        if (block->data[mid].key == key)
-            return mid;
-
-        // Linke Seite
-        if (block->data[mid].key > key)
-            return binary_search_key(block, 0, mid - 1, key);
-
-        // Rechte Seite
-        return binary_search_key(block, mid + 1, r, key);
-    }
-
-    // Kein Element gefunden
-    return -1;
-}
 
 // Aufgabe 2
 /**
