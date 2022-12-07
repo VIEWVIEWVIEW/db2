@@ -248,9 +248,9 @@ void add_book(Block *blockList, int &blockListSize, Book new_book)
 
     print_book(new_book);
 
-    if (new_book.key < 1 || new_book.key > 99999)
+    if (new_book.key < 1 || new_book.key > 9999)
     {
-        cout << "Key range: 1 .. 99999" << endl;
+        cout << "Key range: 1 .. 9999" << endl;
         return;
     }
 

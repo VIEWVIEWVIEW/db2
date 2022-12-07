@@ -53,13 +53,13 @@ void build_index(vector<Book> books, vector<Index> &index)
 
 void print_index(vector<Index> index)
 {
-    cout << "Elements in index: " << index.size() << endl;
     for (auto idx : index)
     {
         cout << "ID: " << idx.id << endl;
         cout << "Position: " << idx.position << endl;
         cout << "----------------" << endl;
     }
+    cout << "Elements in index: " << index.size() << endl;
 }
 
 void load_db_from_file(vector<Book> &books)
@@ -158,7 +158,7 @@ void print_menu()
     cout << "Please select an option:" << endl;
     cout << "1) Load db from file" << endl;
     cout << "2) Build index" << endl;
-    cout << "3) Search by ordnungsbegriff" << endl;
+    // cout << "3) Search by ordnungsbegriff" << endl;
     cout << "4) Print db to cout" << endl;
     cout << "5) Add book" << endl;
     cout << "6) Add sample book" << endl;
@@ -199,15 +199,14 @@ void sort_by_ordnungsbegriff_descending(char *ordnungsbegriff, vector<Index> &in
     // cout << strcmp(a.id, b.id) << endl;
     // sort index by ordnungsbegriff
 
-    sort(index.begin(), index.end(), [ordnungsbegriff](Index a, Index b) {
-        return strcmp(a.id, ordnungsbegriff) > strcmp(b.id, ordnungsbegriff);
-    });
+    sort(index.begin(), index.end(), [ordnungsbegriff](Index a, Index b)
+         { return strcmp(a.id, ordnungsbegriff) > strcmp(b.id, ordnungsbegriff); });
 
     print_index(index);
 }
 
 /**
- * 
+ *
 void sort_by_ordnungsbegriff(char *ordnungsbegriff, vector<Index> index, vector<Book> books)
 {
     cout << "Sorting by " << ordnungsbegriff << endl;
@@ -235,7 +234,6 @@ void sort_by_ordnungsbegriff(char *ordnungsbegriff, vector<Index> index, vector<
 
 int main()
 {
-    // interactive menu where user selects between 1) build datanase, 2) build index, 3) search by ordnungsbegriff, 4) exit
     vector<Book> books;
     vector<Index> index;
 
@@ -257,9 +255,12 @@ int main()
             cout << "Building index..." << endl;
             build_index(books, index);
             break;
+            /**
+             *
         case 3:
             cout << "Searching by ordnungsbegriff..." << endl;
             break;
+            */
         case 4:
             print_books(books);
             break;
